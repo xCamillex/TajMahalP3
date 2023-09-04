@@ -17,6 +17,10 @@
     <string name="button_phone">Call the restaurant</string>
     <string name="button_website">Visit the restaurant\'s website</string>
     <string name="button_adress">View the restaurant\'s location on map</string>
+    <string name="icon_gps">Icon GPS</string>
+    <string name="icone_weekday">Icone weekday</string>
+    <string name="icone_website">Icone website</string>
+    <string name="phone_icon">Phone icon</string>
 
 
 </resources>
