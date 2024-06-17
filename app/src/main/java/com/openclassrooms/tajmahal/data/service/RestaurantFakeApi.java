@@ -25,6 +25,20 @@ import java.util.List;
  * This class returns details of a specific restaurant, "Taj Mahal", with pre-defined attributes.
  * </p>
  *
+ *  * * Une implémentation fictive de {@link RestaurantApi} à des fins de test et de développement.
+ *  *
+ *  * Cette classe simule une API en renvoyant un objet {@link Restaurant} codé en dur, éliminant ainsi
+ *  * le besoin d'appels réels au réseau ou à la base de données. De telles implémentations factices ou
+ *  * fictives sont couramment utilisées dans les tests unitaires et lors du prototypage d'une application.
+ *  *
+ *  * * Pour les débutants: dans le développement de logiciels, un mock est une version simulée
+ *  * d'un système externe (comme une API). Les mocks sont utilisés pour isoler et tester certaines
+ *  * parties du logiciel sans dépendre de systèmes externes. En utilisant un mock, les développeurs
+ *  * peuvent simuler le comportement du système réel. Dans ce cas, au lieu de faire un véritable appel
+ *  * d'API pour obtenir les détails du restaurant, nous utilisons des valeurs codées en dur.
+ *  *
+ *  * Cette classe renvoie les détails d'un restaurant spécifique, "Taj Mahal", avec des attributs prédéfinis.
+ *  *
  * @see Restaurant
  * @see RestaurantApi
  */

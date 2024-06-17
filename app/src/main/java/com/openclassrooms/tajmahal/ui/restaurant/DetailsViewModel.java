@@ -21,7 +21,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
  * utility methods related to the restaurant UI.
  *
  * This ViewModel is integrated with Hilt for dependency injection.
+ *
+ * * MainViewModel est responsable de la préparation et de la gestion des données pour le {@link DetailsFragment}.
+ * Il communique avec le {@link RestaurantRepository} pour récupérer les détails du restaurant
+ * et fournit des méthodes utilitaires liées à l'interface utilisateur du restaurant.
+ *
+ * Ce ViewModel est intégré à Hilt pour l'injection de dépendances.
  */
+
 @HiltViewModel
 public class DetailsViewModel extends ViewModel {
 

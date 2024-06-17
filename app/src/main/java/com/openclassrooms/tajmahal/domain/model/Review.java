@@ -7,6 +7,10 @@ import java.util.Objects;
  * Represents a user review.
  * This class encapsulates all the details of a review, including the username of the reviewer,
  * their profile picture, the comment they left, and the rating they gave.
+ *
+ * * Représente un avis d'utilisateur.
+ * Cette classe encapsule tous les détails d'un avis, y compris le nom d'utilisateur de l'auteur
+ * de l'avis, sa photo de profil, le commentaire qu'il a laissé et la note qu'il a attribuée.
  */
 public class Review {
 

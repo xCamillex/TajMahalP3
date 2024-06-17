@@ -17,6 +17,13 @@ import javax.inject.Singleton;
  * Typically in an Android app built with architecture components, the repository will handle
  * the logic for deciding whether to fetch data from a network source or use data from a local cache.
  *
+ * * Il s'agit de la classe de référentiel pour la gestion des données de restaurant. Les référentiels sont
+ *  * responsables de la coordination des opérations de données à partir de sources de données telles que
+ *  * les API réseau, les bases de données, etc.
+ *  *
+ *  * Généralement, dans une application Android créée avec des composants d'architecture, le référentiel
+ *  * gère la logique permettant de décider s'il faut récupérer les données à partir d'une source réseau ou
+ *  * utiliser les données d'un cache local.
  *
  * @see Restaurant
  * @see RestaurantApi

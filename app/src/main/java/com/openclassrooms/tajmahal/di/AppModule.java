@@ -14,7 +14,12 @@ import dagger.hilt.components.SingletonComponent;
  * AppModule is responsible for providing application-level dependencies
  * for the entire app. This module is installed in the SingletonComponent
  * ensuring that the provided instances are retained throughout the app's lifecycle.
+ *
+ * * AppModule est responsable de la fourniture des dépendances au niveau de l'application pour
+ * l'ensemble de l'application. Ce module est installé dans le composant Singleton, garantissant
+ * que les instances fournies sont conservées tout au long du cycle de vie de l'application.
  */
+
 @Module
 @InstallIn(SingletonComponent.class)
 public class AppModule {

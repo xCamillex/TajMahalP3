@@ -29,7 +29,16 @@ import dagger.hilt.android.AndroidEntryPoint;
  * <p>
  * This class uses {@link FragmentDetailsBinding} for data binding to its layout and
  * {@link DetailsViewModel} to interact with data sources and manage UI-related data.
+ *
+ * * DetailsFragment est le point d'entrée de l'application et sert d'interface utilisateur principale.
+ * Il affiche les détails d'un restaurant et fournit des fonctionnalités pour ouvrir son emplacement
+ * sur une carte, appeler son numéro de téléphone ou consulter son site Web.
+ *
+ * Cette classe utilise {@link FragmentDetailsBinding} pour la liaison de données à sa mise en page
+ * et {@link DetailsViewModel} pour interagir avec les sources de données et gérer les données liées
+ * à l'interface utilisateur.
  */
+
 @AndroidEntryPoint
 public class DetailsFragment extends Fragment {
 
