@@ -26,5 +26,4 @@ import dagger.hilt.android.HiltAndroidApp;
  * @see <a href="https://developer.android.com/training/dependency-injection/hilt-android">Hilt's official documentation</a>
  */
 @HiltAndroidApp
-public class TajMahalApplication extends Application {
-}
+public class TajMahalApplication extends Application{}
