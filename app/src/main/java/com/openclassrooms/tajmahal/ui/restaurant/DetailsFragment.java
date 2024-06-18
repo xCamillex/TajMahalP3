@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
+import androidx.fragment.app.FragmentManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -130,6 +131,55 @@ public class DetailsFragment extends Fragment {
         binding.buttonAdress.setOnClickListener(v -> openMap(restaurant.getAddress()));
         binding.buttonPhone.setOnClickListener(v -> dialPhoneNumber(restaurant.getPhoneNumber()));
         binding.buttonWebsite.setOnClickListener(v -> openBrowser(restaurant.getWebsite()));
+
+    detailsViewModel.getReviews().observe(this, reviews -> {
+        int total = reviews.size();
+        int reviewFiveStars = 0;
+        int reviewFourStars = 0;
+        int reviewThreeStars = 0;
+        int reviewTwoStars = 0;
+        int reviewOneStar = 0;
+
+        for (Review review:reviews) {
+            if (review.getRate() == 5){
+                reviewFiveStars += 1;
+            } else if (review.getRate() == 4) {
+                reviewFourStars +=1;
+            } else if (review.getRate() == 3) {
+                reviewThreeStars +=1;
+            } else if (review.getRate() == 2) {
+                reviewTwoStars +=1;
+            }  else if (review.getRate() == 1) {
+                reviewOneStar +=1;
+            }
+        }
+        binding.progressFive.setProgress(reviewFiveStars);
+        binding.progressFive.setMax(total);
+
+        binding.progressFour.setProgress(reviewFourStars);
+        binding.progressFour.setMax(total);
+
+        binding.progressThree.setProgress(reviewThreeStars);
+        binding.progressThree.setMax(total);
+
+        binding.progressTwo.setProgress(reviewTwoStars);
+        binding.progressTwo.setMax(total);
+
+        binding.progressOne.setProgress(reviewOneStar);
+        binding.progressOne.setMax(total);
+    });
+
+    binding.tvLeaveReview.setOnClickListener(v -> {
+        changeFragment ();
+    });
+
+    }
+
+    private void changeFragment(){
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ReviewFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
     }
 
     /**

@@ -194,7 +194,7 @@
                     android:progressTint="@color/yellow"/>
 
                 <TextView
-                    android:id="@+id/tv_laisser_avis"
+                    android:id="@+id/tvLeaveReview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
