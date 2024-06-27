@@ -20,16 +20,16 @@ import java.util.Objects;
  * </pre>
  *
  * * Représente un restaurant et ses différents attributs.
- *
+ *<p>
  * Cette classe modélise un restaurant avec son nom, son type (par exemple, indien, italien),
  * ses heures d'ouverture, son adresse, son site Web, son numéro de téléphone et la disponibilité
  * des options de restauration sur place et à emporter.
- *
+ *<p>
  * Pour les débutants: une classe est un plan directeur pour la création d'objets en Java.
  * Les objets sont des instances d'une classe.
  * Dans ce cas, la classe 'Restaurant' nous permet de représenter différents restaurants avec
  * leurs détails spécifiques.
- *
+ *<p>
  *Exemple:
  * Restaurant tajMahal = new Restaurant("Taj Mahal", "Indian", "11h30 - 22h00",
  * "123 Street", "http://tajmahal.com", "1234567890", true, false);

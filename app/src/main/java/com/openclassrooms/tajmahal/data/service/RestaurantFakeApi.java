@@ -59,6 +59,7 @@ public class RestaurantFakeApi implements RestaurantApi {
      * Retrieves a hard-coded {@link Restaurant} object for the "Taj Mahal".
      * <p>
      * This method simulates an API call by immediately returning a Restaurant object
+     *<p>
      * with pre-defined attributes. The object represents the "Taj Mahal" restaurant
      * with specific details.
      * </p>
@@ -88,8 +89,9 @@ public class RestaurantFakeApi implements RestaurantApi {
     }
 
     @Override
-    public void addReview (String comment, int rating, String avatar, String userName) {
+    public void addReview (String comment, Integer rating, String avatar, String userName) {
         if (comment.isEmpty()) return;
+        if (rating == null) return;
         Review review = new Review(userName, avatar, comment, rating);
         List<Review> tmp = new ArrayList<>();
         tmp.add(review);

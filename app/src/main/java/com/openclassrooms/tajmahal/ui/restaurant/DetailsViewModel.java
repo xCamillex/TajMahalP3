@@ -23,13 +23,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
  * MainViewModel is responsible for preparing and managing the data for the {@link DetailsFragment}.
  * It communicates with the {@link RestaurantRepository} to fetch restaurant details and provides
  * utility methods related to the restaurant UI.
- *
+ *<p>
  * This ViewModel is integrated with Hilt for dependency injection.
- *
+ *<p>
  * * MainViewModel est responsable de la préparation et de la gestion des données pour le {@link DetailsFragment}.
  * Il communique avec le {@link RestaurantRepository} pour récupérer les détails du restaurant
  * et fournit des méthodes utilitaires liées à l'interface utilisateur du restaurant.
- *
+ *<p>
  * Ce ViewModel est intégré à Hilt pour l'injection de dépendances.
  */
 
@@ -77,7 +77,7 @@ public class DetailsViewModel extends ViewModel {
         return restaurantRepository.getReviews();
     }
 
-    public void addReview(String comment, int rating, String avatar, String userName) {
+    public void addReview(String comment, Integer rating, String avatar, String userName) {
         restaurantRepository.addReview(comment, rating, avatar, userName);
     }
     /**

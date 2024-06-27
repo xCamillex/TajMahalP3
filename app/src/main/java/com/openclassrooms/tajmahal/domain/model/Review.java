@@ -7,7 +7,7 @@ import java.util.Objects;
  * Represents a user review.
  * This class encapsulates all the details of a review, including the username of the reviewer,
  * their profile picture, the comment they left, and the rating they gave.
- *
+ *<p>
  * * Représente un avis d'utilisateur.
  * Cette classe encapsule tous les détails d'un avis, y compris le nom d'utilisateur de l'auteur
  * de l'avis, sa photo de profil, le commentaire qu'il a laissé et la note qu'il a attribuée.
@@ -52,7 +52,7 @@ public class Review {
 
     /**
      * Sets or updates the username of the reviewer.
-     *
+     *<p>
      * @param username the new username to be set
      */
     public void setUsername(String username) {
@@ -61,7 +61,7 @@ public class Review {
 
     /**
      * Returns the profile picture of the reviewer.
-     *
+     *<p>
      * @return a String representing the picture's URL or path
      */
     public String getPicture() {

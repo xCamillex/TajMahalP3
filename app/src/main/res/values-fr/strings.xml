@@ -24,5 +24,8 @@
     <string name="button_return">retour</string>
     <string name="confirm">Valider</string>
     <string name="leave_a_review">Laisser un avis</string>
+    <string name="please_enter_a_comment_or_provide_a_rating">Veuillez saisir un commentaire ou donner une note</string>
+    <string name="please_enter_a_comment">Veuillez saisir un commentaire</string>
+    <string name="please_provide_a_rating">Veuillez donner une note</string>
 
 </resources>

@@ -2,16 +2,17 @@ package com.openclassrooms.tajmahal.ui.restaurant;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
@@ -42,7 +43,6 @@ public class ReviewFragment extends Fragment {
      *
      * @return A new instance of fragment ReviewFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ReviewFragment newInstance() {
         ReviewFragment fragment = new ReviewFragment();
         Bundle args = new Bundle();
@@ -56,7 +56,7 @@ public class ReviewFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentReviewBinding.inflate(inflater, container, false);
@@ -68,8 +68,19 @@ public class ReviewFragment extends Fragment {
             setupAddReview();
             setupAvatar();
 
-            return binding.getRoot();
+            binding.buttonBack.setOnClickListener(view -> {
+                returnFragment();
+            });
+        return binding.getRoot();
     }
+
+    private void returnFragment(){
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, DetailsFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+    }
+
     private void setupAvatar() {
         // Appeler le detailViewModel getUser()
         LiveData<User> user = detailsViewModel.getUser();
@@ -81,27 +92,37 @@ public class ReviewFragment extends Fragment {
                     .into(binding.ivNewReviewAvatar);
             binding.tvNewReviewName.setText(user1.getUserName());
         });
-
     }
 
     private void setupAddReview() {
         binding.buttonValidate.setOnClickListener(
                 arg -> {
                     String comment = String.valueOf(Objects.requireNonNull(binding.tietNewReviewComment.getText()));
-                    Log.d("reviewFragment", "Comment: "+comment);
                     float rating = binding.rbNewReviewRate.getRating();
-                    Log.d("reviewFragment", "rating: "+ rating);
+
+                    if (comment.isEmpty() && (rating == 0)){
+                        Toast.makeText(getContext(), R.string.please_enter_a_comment_or_provide_a_rating, Toast.LENGTH_SHORT).show();
+                        return;
+                    } else if (comment.isEmpty()){
+                        Toast.makeText(getContext(), R.string.please_enter_a_comment, Toast.LENGTH_SHORT).show();
+                        return;
+                    } else if (rating == 0){
+                        Toast.makeText(getContext(), R.string.please_provide_a_rating
+                                , Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     // Appeler le detailViewModel getUser()
                     String avatar = "https://xsgames.co/randomusers/assets/avatars/female/1.jpg";
                     String userName = "Manon Garcia";
                     detailsViewModel.addReview(comment, (int) rating, avatar, userName);
                     updateUI();
+
+                    binding.tietNewReviewComment.setText("");
+                    binding.rbNewReviewRate.setRating(0);
                 }
         );
-
     }
-
-
 
     private void updateUI (){
         detailsViewModel.getReviews().observe(getViewLifecycleOwner(), reviews -> {
@@ -109,6 +130,9 @@ public class ReviewFragment extends Fragment {
         });
     }
 
+    /**
+     * Initializes the ViewModel for this fragment.
+     */
     private void setupViewModel(){
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
     }

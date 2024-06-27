@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +28,11 @@ import dagger.hilt.android.AndroidEntryPoint;
  * <p>
  * This class uses {@link FragmentDetailsBinding} for data binding to its layout and
  * {@link DetailsViewModel} to interact with data sources and manage UI-related data.
- *
+ *<p>
  * * DetailsFragment est le point d'entrée de l'application et sert d'interface utilisateur principale.
  * Il affiche les détails d'un restaurant et fournit des fonctionnalités pour ouvrir son emplacement
  * sur une carte, appeler son numéro de téléphone ou consulter son site Web.
- *
+ *<p>
  * Cette classe utilise {@link FragmentDetailsBinding} pour la liaison de données à sa mise en page
  * et {@link DetailsViewModel} pour interagir avec les sources de données et gérer les données liées
  * à l'interface utilisateur.
@@ -50,7 +48,7 @@ public class DetailsFragment extends Fragment {
     /**
      * This method is called when the fragment is first created.
      * It's used to perform one-time initialization.
-     *
+     *<p>
      * @param savedInstanceState A bundle containing previously saved instance state.
      * If the fragment is being re-created from a previous saved state, this is the state.
      */
@@ -62,7 +60,7 @@ public class DetailsFragment extends Fragment {
     /**
      * This method is called immediately after `onCreateView()`.
      * Use this method to perform final initialization once the fragment views have been inflated.
-     *
+     *<p>
      * @param view The View returned by `onCreateView()`.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
@@ -77,7 +75,7 @@ public class DetailsFragment extends Fragment {
 
     /**
      * Creates and returns the view hierarchy associated with the fragment.
-     *
+     *<p>
      * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
      * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
      * The fragment should not add the view itself but return it.
@@ -112,7 +110,7 @@ public class DetailsFragment extends Fragment {
 
     /**
      * Updates the UI components with the provided restaurant data.
-     *
+     *<p>
      * @param restaurant The restaurant object containing details to be displayed.
      */
     private void updateUIWithRestaurant(Restaurant restaurant) {
@@ -185,7 +183,7 @@ public class DetailsFragment extends Fragment {
     /**
      * Opens the provided address in Google Maps or shows an error if Google Maps
      * is not installed.
-     *
+     *<p>
      * @param address The address to be shown in Google Maps.
      */
     private void openMap(String address) {
@@ -202,7 +200,7 @@ public class DetailsFragment extends Fragment {
     /**
      * Dials the provided phone number or shows an error if there's no dialing application
      * installed.
-     *
+     *<p>
      * @param phoneNumber The phone number to be dialed.
      */
     private void dialPhoneNumber(String phoneNumber) {
@@ -218,7 +216,7 @@ public class DetailsFragment extends Fragment {
     /**
      * Opens the provided website URL in a browser or shows an error if there's no
      * browser installed.
-     *
+     *<p>
      * @param websiteUrl The URL of the website to be opened.
      */
     private void openBrowser(String websiteUrl) {
