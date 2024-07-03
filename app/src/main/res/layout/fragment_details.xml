@@ -136,7 +136,7 @@
 
             <!--  Les barres de progression pour chaque niveau d'étoile -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:orientation="vertical"
@@ -147,7 +147,7 @@
                 <ProgressBar
                     android:id="@+id/progressFive"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
                     android:progress="80"
@@ -157,7 +157,7 @@
                 <ProgressBar
                     android:id="@+id/progressFour"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
                     android:progress="80"
@@ -167,7 +167,7 @@
                 <ProgressBar
                     android:id="@+id/progressThree"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
                     android:progress="80"
@@ -177,7 +177,7 @@
                 <ProgressBar
                     android:id="@+id/progressTwo"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
                     android:progress="80"
@@ -187,7 +187,7 @@
                 <ProgressBar
                     android:id="@+id/progressOne"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="100"
                     android:progress="80"
@@ -352,6 +352,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/jakarta_semibold"
             android:textColor="#666"
             android:textSize="12sp"
