@@ -51,6 +51,11 @@ public class DetailsFragment extends Fragment {
      *<p>
      * @param savedInstanceState A bundle containing previously saved instance state.
      * If the fragment is being re-created from a previous saved state, this is the state.
+     * Cette méthode est appelée lorsque le fragment est créé pour la première fois. Elle est
+     * utilisée pour effectuer une initialisation unique.
+     * @param savedInstanceState Un bundle (conteneur pour les données qui doivent être transférées
+     * entre différents composant d'une appli)contenant l'état d'instance précédemment enregistré. Si
+     * le fragment est recréé à partir d'un état enregistré précédemment, il s'agit de l'état.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,13 @@ public class DetailsFragment extends Fragment {
      * @param view The View returned by `onCreateView()`.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
+     * Cette méthode est appelée immédiatement après `onCreateView()`.
+     * Utilisez cette méthode pour effectuer l'initialisation finale une fois que les vues de
+     * fragment ont été gonflées (fait référence au processus par lequel un fichier XML est converti
+     * en "View" utilisable dans le code).
+     * @param view The View returned by `onCreateView()`.
+     * @param savedInstanceState Si la valeur n'est pas nulle, ce fragment est reconstruit à partir
+     * d'un état enregistré précédent comme indiqué ici.
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -82,6 +94,14 @@ public class DetailsFragment extends Fragment {
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
      * @return Returns the View for the fragment's UI, or null.
+     * Crée et renvoie la hiérarchie de vues associée au fragment.
+     * @param inflater L'objet LayoutInflater qui peut être utilisé pour gonfler toutes les vues du fragment.
+     * @param container Si non nul, il s'agit de la vue parente à laquelle l'interface utilisateur
+     * du fragment doit être attachée.
+     * Le fragment ne doit pas ajouter la vue elle-même mais la renvoyer.
+     * @param savedInstanceState Si non nul, ce fragment est en cours de reconstruction à partir
+     * d'un état enregistré précédent comme indiqué ici.
+     * @return Renvoie la vue de l'interface utilisateur du fragment, ou null.
      */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -92,6 +112,8 @@ public class DetailsFragment extends Fragment {
 
     /**
      * Sets up the UI-specific properties, such as system UI flags and status bar color.
+     * Définit les propriétés spécifiques à l'interface utilisateur, telles que les indicateurs de
+     * l'interface utilisateur système et la couleur de la barre d'état.
      */
     private void setupUI() {
         Window window = requireActivity().getWindow();
@@ -102,7 +124,7 @@ public class DetailsFragment extends Fragment {
     }
 
     /**
-     * Initializes the ViewModel for this activity.
+     * Initializes the ViewModel for this activity. Initialise le ViewModel pour cette activité.
      */
     private void setupViewModel() {
         detailsViewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
@@ -112,6 +134,8 @@ public class DetailsFragment extends Fragment {
      * Updates the UI components with the provided restaurant data.
      *<p>
      * @param restaurant The restaurant object containing details to be displayed.
+     * Met à jour les composants de l'interface utilisateur avec les données de restaurant fournies.
+     * @param restaurant L'objet restaurant contenant les détails à afficher.
      */
     private void updateUIWithRestaurant(Restaurant restaurant) {
         if (restaurant == null) return;
@@ -130,7 +154,32 @@ public class DetailsFragment extends Fragment {
         binding.buttonPhone.setOnClickListener(v -> dialPhoneNumber(restaurant.getPhoneNumber()));
         binding.buttonWebsite.setOnClickListener(v -> openBrowser(restaurant.getWebsite()));
 
-    detailsViewModel.getReviews().observe(this, reviews -> {
+        /** Observe changes in a list of reviews using a LiveData in a ViewModel. When a review
+         * update occurs, it calculates the number of reviews for each rating from 1 to 5 stars and
+         * updates the corresponding progress bars.
+         * - total stores the total number of reviews.
+         * - The variables reviewFiveStars, reviewFourStars, reviewThreeStars, reviewTwoStars, and
+         * reviewOneStar initialized to zero count the reviews for each rating.
+         * - Loops through each review and increments the corresponding counter based on the review
+         * rating (review.getRate()).
+         * - Updates the progress bars for each review rating with the number of corresponding reviews.
+         * - setProgress sets the number of reviews for that rating.
+         * - setMax sets the total number of reviews so that the progress bar is proportional to the total.
+         * Observe les changements dans une liste d'avis à l'aide d'un LiveData dans un ViewModel.
+         * Lorsqu'une mise à jour des avis se produit, il calcule le nombre d'avis pour chaque note
+         * de 1 à 5 étoiles et met à jour les barres de progression correspondantes.
+         * - total stocke le nombre total d'avis.
+         * - Les variables reviewFiveStars, reviewFourStars, reviewThreeStars, reviewTwoStars et
+         * reviewOneStar initialisées à zéro comptent les avis pour chaque note.
+         * - Parcoure chaque avis et incrémente le compteur correspondant en fonction de la note de
+         * l'avis (review.getRate()).
+         * - Met à jour les barres de progression pour chaque note d'avis avec le nombre d'avis
+         * correspondants.
+         * - setProgress définit le nombre d'avis pour cette note.
+         * - setMax définit le nombre total d'avis pour que la barre de progression soit
+         * proportionnelle au total.
+         */
+        detailsViewModel.getReviews().observe(this, reviews -> {
         int total = reviews.size();
         int reviewFiveStars = 0;
         int reviewFourStars = 0;
@@ -173,6 +222,10 @@ public class DetailsFragment extends Fragment {
 
     }
 
+    /** The changeFragment method replaces the current fragment with a new instance of ReviewFragment.
+     * The fragment transaction is added to allow back navigation when clicking the arrow.
+     * La méthode changeFragment remplace le fragment actuel par une nouvelle instance de ReviewFragment.
+     */
     private void changeFragment(){
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, ReviewFragment.newInstance())
@@ -185,6 +238,8 @@ public class DetailsFragment extends Fragment {
      * is not installed.
      *<p>
      * @param address The address to be shown in Google Maps.
+     * Ouvre l'adresse fournie dans Google Maps ou affiche une erreur si Google Maps n'est pas installé.
+     * @param address L'adresse à afficher dans Google Maps.
      */
     private void openMap(String address) {
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
@@ -202,6 +257,9 @@ public class DetailsFragment extends Fragment {
      * installed.
      *<p>
      * @param phoneNumber The phone number to be dialed.
+     * Compose le numéro de téléphone fourni ou affiche une erreur si aucune application de
+     * numérotation n'est installée.
+     * @param phoneNumber Le numéro de téléphone à composer.
      */
     private void dialPhoneNumber(String phoneNumber) {
         Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -218,6 +276,9 @@ public class DetailsFragment extends Fragment {
      * browser installed.
      *<p>
      * @param websiteUrl The URL of the website to be opened.
+     * Ouvre l'URL du site Web fourni dans un navigateur ou affiche une erreur si aucun navigateur
+     * n'est installé.
+     * @param websiteUrl L'URL du site Web à ouvrir.
      */
     private void openBrowser(String websiteUrl) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
@@ -228,6 +289,9 @@ public class DetailsFragment extends Fragment {
         }
     }
 
+    /** Creates and returns a new instance of DetailsFragment.
+     * Crée et retourne une nouvelle instance de DetailsFragment.
+     */
     public static DetailsFragment newInstance() {
         return new DetailsFragment();
     }

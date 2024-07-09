@@ -40,8 +40,9 @@ public class DetailsViewModel extends ViewModel {
 
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.
-     *
      * @param restaurantRepository The repository which will provide restaurant data.
+     * Constructeur que Hilt utilisera pour créer une instance de MainViewModel.
+     * @param restaurantRepository Le référentiel qui fournira les données du restaurant.
      */
     @Inject
     public DetailsViewModel(RestaurantRepository restaurantRepository) {
@@ -50,7 +51,9 @@ public class DetailsViewModel extends ViewModel {
 
     /**
      * the code initializes the "DetailsViewModel" with a "RestaurantRepository" using a
-     * "RestaurantFakeApi", which allows to simulate the behavior of a real API
+     * "RestaurantFakeApi", which allows to simulate the behavior of a real API.
+     * le code initialise le "DetailsViewModel" avec un "RestaurantRepository" en utilisant un
+     * "RestaurantFakeApi", ce qui permet de simuler le comportement d'une API réelle
      */
     public DetailsViewModel(){
         this.restaurantRepository = new RestaurantRepository(new RestaurantFakeApi());
@@ -58,32 +61,46 @@ public class DetailsViewModel extends ViewModel {
 
     /**
      * Fetches the details of the Taj Mahal restaurant.
-     *
      * @return LiveData object containing the details of the Taj Mahal restaurant.
+     * Récupère les détails du restaurant Taj Mahal.
+     * Objet @return LiveData contenant les détails du restaurant Taj Mahal.
      */
     public LiveData<Restaurant> getTajMahalRestaurant() {
         return restaurantRepository.getRestaurant();
     }
 
+    /** Returns a LiveData object that contains the user's information, obtained from the restaurantRepository.
+     * Renvoie un objet LiveData qui contient les informations de l'utilisateur, obtenu depuis le
+     * restaurantRepository.
+     */
     public LiveData<User> getUser() {
         return restaurantRepository.getUser();
     }
+
     /**
      * Retrieves customer review details
-     *
      * @return LiveData object containing review details.
+     * Récupère les détails des avis clients
+     * Objet @return LiveData contenant les détails des avis.
      */
     public LiveData<List<Review>> getReviews(){
         return restaurantRepository.getReviews();
     }
 
+    /** Adds a new review associated with a user with a specified comment, rating and avatar, using
+     * the restaurantRepository to perform the operation.
+     *  Ajoute une nouvel avis associé à un utilisateur avec un commentaire, une note et un avatar
+     *  spécifiés, en utilisant le restaurantRepository pour effectuer l'opération.
+     */
     public void addReview(String comment, Integer rating, String avatar, String userName) {
         restaurantRepository.addReview(comment, rating, avatar, userName);
     }
+
     /**
      * Retrieves the current day of the week in French.
-     *
      * @return A string representing the current day of the week in French.
+     * Récupère le jour actuel de la semaine en français.
+     * @return Une chaîne de charactère représentant le jour actuel de la semaine en français.
      */
     public String getCurrentDay(Context context) {
         Calendar calendar = Calendar.getInstance();

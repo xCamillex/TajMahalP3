@@ -50,8 +50,11 @@ public interface RestaurantApi {
      * This method will usually be connected to a network call or database query in its
      * implementing class, fetching the required restaurant information.
      * </p>
-     *
      * @return The {@link Restaurant} object containing all the details of the restaurant.
+     * Récupère les détails d'un restaurant. Cette méthode sera généralement connectée à un appel
+     * réseau ou à une requête de base de données dans sa classe d'implémentation, récupérant les
+     * informations requises sur le restaurant.
+     * @return L'objet {@link Restaurant} contenant tous les détails du restaurant.
      */
     Restaurant getRestaurant();
 
@@ -61,8 +64,11 @@ public interface RestaurantApi {
      * This method will usually be connected to a network call or database query in its
      * implementing class, fetching the list of the existing reviews.
      * </p>
-     *
      * @return The {@link Restaurant} object containing all the details of the restaurant.
+     * Récupère tous les avis du restaurant. Cette méthode sera généralement connectée à un appel
+     * réseau ou à une requête de base de données dans sa classe d'implémentation, récupérant la
+     * liste des avis existants.
+     * @return L'objet {@link Restaurant} contenant tous les détails du restaurant.
      */
     List<Review> getReviews();
 
@@ -75,11 +81,13 @@ public interface RestaurantApi {
      * @param rating
      * @param avatar
      * @param userName
+     * Récupère la note moyenne du restaurant. Cette méthode ajoute un avis sur le restaurant.
      */
     void addReview(String comment,Integer rating, String avatar, String userName);
 
     /**
-     * Retrieves the user.
+     * Declares a getUser method that returns an object of type User.
+     * Déclare une méthode getUser qui renvoie un objet de type User.
      */
     User getUser();
 }

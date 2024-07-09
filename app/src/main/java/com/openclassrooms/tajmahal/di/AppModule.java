@@ -28,8 +28,10 @@ public class AppModule {
      * Provides a singleton instance of the RestaurantApi. In this example,
      * a fake implementation of the API is being used, which can be helpful
      * during testing or mock scenarios.
-     *
      * @return A singleton instance of the RestaurantFakeApi.
+     * Fournit une instance singleton de RestaurantApi (Design Pattern de création qui garantit que
+     * l'instance d'une classe n'existe qu'en un seul exemplaire). Dans cet exemple, une fausse
+     * implémentation de l'API est utilisée, ce qui peut être utile lors de tests ou de scénarios fictifs.
      */
     @Provides
     @Singleton

@@ -70,6 +70,12 @@ public class Restaurant {
         this.takeAway = takeAway;
     }
 
+    /** This code overrides the equals method for a Restaurant class. The equals method is used to
+     * compare two objects for equality.
+     * Ce code redéfinit la méthode equals pour une classe Restaurant. La méthode equals est utilisée
+     * pour comparer deux objets. Cette méthode est essentielle pour des opérations de collections
+     * comme la recherche, la suppression ou l'utilisation des objets comme clés dans des maps.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,71 +84,184 @@ public class Restaurant {
         return dineIn == that.dineIn && takeAway == that.takeAway && Objects.equals(name, that.name) && Objects.equals(type, that.type) && Objects.equals(hours, that.hours) && Objects.equals(address, that.address) && Objects.equals(website, that.website) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
+    /** This code overrides the hashCode() method to calculate and return a hash code based on several of its attributes.
+     * Ce code redéfinit la méthode hashCode() pour calculer et retourner un code de hachage basé
+     * sur plusieurs de ses attributs.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, type, hours, address, website, phoneNumber, dineIn, takeAway);
     }
 
+    /** This code defines a method "getName()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "name".
+     * Ce code définit une méthode "getName()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "name".
+     */
     public String getName() {
         return name;
     }
 
+    /** This code defines a method "setName" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "name" attribute of the current object.
+     * Ce code définit une méthode "setName" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "name" de l'objet actuel.
+     */
     public void setName(String name) {
-        this.name = name;
+        this.name = name; //attribue la valeur passée en paramètre (name) à l'attribut name de l'objet courant (this).
+        // L'attribut name doit être défini dans la classe où cette méthode est déclarée.
     }
 
+    /** This code defines a method "getType()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "type".
+     * Ce code définit une méthode "getType()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "type".
+     */
     public String getType() {
         return type;
     }
 
+    /** This code defines a method "setType" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "type" attribute of the current object.
+     * Ce code définit une méthode "setType" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "type" de l'objet actuel.
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /** This code defines a method "getHours()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "hours".
+     * Ce code définit une méthode "getHours()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "hours".
+     */
     public String getHours() {
         return hours;
     }
 
+    /** This code defines a method "setHours" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "hours" attribute of the current object.
+     * Ce code définit une méthode "setHours" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "hours" de l'objet actuel.
+     */
     public void setHours(String hours) {
         this.hours = hours;
     }
 
+    /** This code defines a method "getAddress()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "address".
+     * Ce code définit une méthode "getAddress()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "address".
+     */
     public String getAddress() {
         return address;
     }
 
+    /** This code defines a method "setAddress" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "address" attribute of the current object.
+     * Ce code définit une méthode "setAddress" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "address" de l'objet actuel.
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /** This code defines a method "getWebsite()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "website".
+     * Ce code définit une méthode "getWebsite()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "website".
+     */
     public String getWebsite() {
         return website;
     }
 
+    /** This code defines a method "setWebsite" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "website" attribute of the current object.
+     * Ce code définit une méthode "setWebsite" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "website" de l'objet actuel.
+     */
     public void setWebsite(String website) {
         this.website = website;
     }
 
+    /** This code defines a method "getPhoneNumber()" as "public", which means it can be called from
+     * anywhere with return type "String", which indicates that the method returns a string that
+     * returns the value of the attribute "phoneNumber".
+     * Ce code définit une méthode "getPhoneNumber()" de manière "public", ce qui signifie qu'elle peut
+     * être appelée depuis n'importe où avec type de retour "String" , ce qui indique que la méthode
+     * retourne une chaîne de caractères qui retourne la valeur de l'attribut "phoneNumber".
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /** This code defines a method "setPhoneNumber" as "public", which means it can be called from anywhere
+     * with return type "String", which indicates that the method returns a string that allows to set
+     * or update the value of the "phoneNumber" attribute of the current object.
+     * Ce code définit une méthode "setPhoneNumber" de manière "public", ce qui signifie qu'elle peut être
+     * appelée depuis n'importe où avec un type de paramètre "String", indiquant que la méthode attend
+     * une chaîne de caractères comme argument qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "phoneNumber" de l'objet actuel.
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /** Defines a "public" method "isDineIn()" of boolean return type (true or false) and which
+     * returns the value of the "dineIn" attribute.
+     * Définit une méthode "isDineIn()"  de manière "publique" de type retour   boolean (true ou
+     * false) et qui retourne la valeur de l'attribut "dineIn".
+     */
     public boolean isDineIn() {
         return dineIn;
     }
 
+    /** Defines a method "setDineIn" which allows to set or update the value of the "dineIn" attribute.
+     * Définit une méthode "setDineIn"  qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "dineIn".
+     */
     public void setDineIn(boolean dineIn) {
         this.dineIn = dineIn;
     }
 
+    /** Defines a "public" method "isTakeAway()" of boolean return type (true or false) and which
+     * returns the value of the "takeAway" attribute.
+     * Définit une méthode "isTakeAway()"  de manière "publique" de type retour   boolean (true ou
+     * false) et qui retourne la valeur de l'attribut "takeAway".
+     */
     public boolean isTakeAway() {
         return takeAway;
     }
 
+    /** Defines a method "setTakeAway" which allows to set or update the value of the "takeAway" attribute.
+     * Définit une méthode "setTakeAway"  qui permet de définir ou de mettre à jour la valeur de
+     * l'attribut "takeAway".
+     */
     public void setTakeAway(boolean takeAway) {
         this.takeAway = takeAway;
     }
