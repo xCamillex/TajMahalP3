@@ -3,6 +3,7 @@ package com.openclassrooms.tajmahal.ui.restaurant;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.openclassrooms.tajmahal.R;
@@ -10,6 +11,7 @@ import com.openclassrooms.tajmahal.data.repository.RestaurantRepository;
 import com.openclassrooms.tajmahal.data.service.RestaurantFakeApi;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.domain.model.ReviewUtils;
 import com.openclassrooms.tajmahal.domain.model.User;
 
 import javax.inject.Inject;
@@ -37,6 +39,50 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class DetailsViewModel extends ViewModel {
 
     private final RestaurantRepository restaurantRepository;
+
+    /**
+     * MutableLiveData object for storing and observing the average rating value.
+     * Objet MutableLiveData pour stocker et observer la valeur de notation moyenne.
+     */
+    private MutableLiveData<Float> averageRating = new MutableLiveData<>();
+
+    /**
+     * MutableLiveData object for storing and observing the total number of reviews.
+     * Objet MutableLiveData pour stocker et observer le nombre total d'avis.
+     */
+    private MutableLiveData<Integer> totalReviews = new MutableLiveData<>();
+
+    /**
+     * Returns LiveData for observing the average rating of reviews.
+     * @return LiveData<Float> representing the average rating.
+     * Renvoie LiveData pour observer la note moyenne des avis.
+     * @return LiveData<Float> représentant la note moyenne.
+     */
+    public LiveData<Float> getAverageRating() {
+        return averageRating;
+    }
+
+    /**
+     * Returns LiveData for observing the total number of reviews.
+     * @return LiveData<Integer> representing the total number of reviews.
+     * Renvoie LiveData pour observer le nombre total d'avis.
+     * @return LiveData<Integer> représentant le nombre total d'avis.
+     */
+    public LiveData<Integer> getTotalReviews() {
+        return totalReviews;
+    }
+
+    /**
+     * Calculates and updates the average rating and total number of reviews.
+     * @param reviews The list of reviews used to calculate the average rating and total reviews.
+     * Calcule et met à jour la note moyenne et le nombre total d'avis.
+     * @param reviews La liste des avis utilisés pour calculer la note moyenne et le nombre total d'avis.
+     */
+    public void calculateReviewsData(List<Review> reviews) {
+        float avgRating = ReviewUtils.calculateAverageRating(reviews);
+        averageRating.setValue(avgRating);
+        totalReviews.setValue(reviews.size());
+    }
 
     /**
      * Constructor that Hilt will use to create an instance of MainViewModel.

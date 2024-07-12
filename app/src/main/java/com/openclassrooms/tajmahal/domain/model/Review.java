@@ -1,5 +1,6 @@
 package com.openclassrooms.tajmahal.domain.model;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -145,4 +146,5 @@ public class Review {
     public int hashCode() {
         return Objects.hash(username, picture, comment, rate);
     }
+
 }

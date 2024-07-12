@@ -18,6 +18,9 @@ import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 import com.openclassrooms.tajmahal.domain.model.Review;
+import com.openclassrooms.tajmahal.domain.model.ReviewUtils;
+
+import java.util.Locale;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -181,6 +184,8 @@ public class DetailsFragment extends Fragment {
          */
         detailsViewModel.getReviews().observe(this, reviews -> {
         int total = reviews.size();
+        //Displays the total number of reviews Affiche le nombre total d'avis données
+        binding.tvRestaurantTotalRatings.setText(String.valueOf(total));
         int reviewFiveStars = 0;
         int reviewFourStars = 0;
         int reviewThreeStars = 0;
@@ -214,6 +219,25 @@ public class DetailsFragment extends Fragment {
 
         binding.progressOne.setProgress(reviewOneStar);
         binding.progressOne.setMax(total);
+
+            /**
+             * Observes the average rating LiveData and updates UI components accordingly.
+             * Observe la note moyenne LiveData et met à jour les composants de l'interface
+             * utilisateur en conséquence.
+             */
+            detailsViewModel.getAverageRating().observe(this, averageRating -> {
+                binding.tvRestaurantRate.setText(String.format(Locale.getDefault(), "%.1f", averageRating));
+                binding.rbRestaurant.setRating(averageRating);
+            });
+
+            /**
+             * Calculates and updates the average rating and total reviews based on the provided list of reviews.
+             * @param reviews The list of reviews used to calculate the average rating and total reviews.
+             * Calcule et met à jour la note moyenne et le nombre total d'avis en fonction de la liste d'avis fournie.
+             * @param reviews La liste des avis utilisée pour calculer la note moyenne et le nombre total d'avis.
+             */
+            detailsViewModel.calculateReviewsData(reviews);
+
     });
 
     binding.tvLeaveReview.setOnClickListener(v -> {
